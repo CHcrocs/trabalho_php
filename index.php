@@ -21,7 +21,7 @@
         <input type="number" name="preco" id="preco" required step=".01">
         <br>
         <label for="quantidade">Quantidade em Estoque: </label>
-        <input type="number" name="quantidade" id="quantidade" required>
+        <input type="number" name="quantidade" id="quantidade" required min="1">
         <br>
         <button type="submit">Enviar</button>
     </form>
