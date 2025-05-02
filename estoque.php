@@ -10,29 +10,29 @@
 <body>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (empty($_POST['titulo']))
-            $erros[] = "<p>Favor preencher o campo titulo</p>";
-        if (empty($_POST['autor']))
-            $erros[] = "<p>Favor preencher o campo autor</p>";
-        if ($_POST['preco'] < 0.01)
-            $erros[] = "<p>Favor informar um preço maior do que 0.01 reais</p>";
-        if ($_POST['quantidade'] < 0)
-            $erros[] = "<p>Favor informar um numero inteiro maior do que 0</p>";
+        require_once "validacoes.php";
 
-        if (!isset($erros)) {
+        $livro = [
+            "titulo" => $_POST['titulo'],
+            "autor" => $_POST['autor'],
+            "preco" => $_POST['preco'],
+            "quantidade" => $_POST['quantidade']
+        ];
+        
+        if (validarLivro($livro)) {
+            echo "<h1>Informações do livro</h1>";
 
-            
+            $valor_total = calcularValorTotalEstoque($livro);
 
+            echo "<h3> Titulo: ". $livro['titulo'] ."</h3>";
+            echo "<h3> Autor: ". $livro['autor'] ."</h3>";
+            echo "<h3> Preço unitário: ". $livro['preco'] ."</h3>";
+            echo "<h3> Quantidade: ". $livro['quantidade'] ."</h3>";
+            echo "<h3> Valor Total: ". $valor_total ."</h3>";
         }
-        else {
-            foreach ($erros as $erroFatal){
-                echo $erroFatal;
-            }
-        }
-
-
+        
     } else {
-        echo "<p>Preencher o formulário</p>";
+        echo "<h3>Preencher o formulário</h3>";
     }
     ?>
 </body>

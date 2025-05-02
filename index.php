@@ -22,6 +22,8 @@
         <br>
         <label for="quantidade">Quantidade em Estoque: </label>
         <input type="number" name="quantidade" id="quantidade" required>
+        <br>
+        <button type="submit">Enviar</button>
     </form>
 </body>
 
