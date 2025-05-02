@@ -6,7 +6,7 @@ function validarLivro($livro)
     if (empty($livro['autor']))
         $erros[] = "<h3>Favor preencher o campo autor</h3>";
     if ($livro['preco'] < 0.01)
-        $erros[] = "<h3>Favor informar um preço maior do que 0.01 reais</h3>";
+        $erros[] = "<h3>Favor informar um preço maior ou igual a 0.01</h3>";
     if ($livro['quantidade'] <= 0)
         $erros[] = "<h3>Favor informar um numero inteiro maior do que 0</h3>";
 
